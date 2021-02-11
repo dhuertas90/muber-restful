@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bd2.Muber.model.Travel" table="travel">
+        <id name="id" column="travel_id">
+            <generator class="native" />
+        </id>
+        <property name="open" column="opened" />
+        <property name="origin" />
+        <property name="destination" />
+        <property name="cost" />
+        <property name="date" />
+        <property name="maximumQuantity" />
+        <many-to-one name="driver" class="bd2.Muber.model.Driver" column="driver_id" cascade="all" not-null="true" />
+        <set name="passengers" table="TravelPassengers" cascade="save-update">
+            <key column="travel_id" />
+            <many-to-many column="passenger_id" class="bd2.Muber.model.Passenger" />
+        </set>
+        <set name="ratings" cascade="all" inverse="true">
+            <key column="travel_id" />
+            <one-to-many class="bd2.Muber.model.Rating" />
+        </set>
+    </class>
+</hibernate-mapping>

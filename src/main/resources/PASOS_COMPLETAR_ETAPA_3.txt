@@ -1,0 +1,105 @@
+Por defecto se carga la informacion del TP1. 
+
+a. Se crea un nuevo viaje de Córdoba a Mar del Plata con el conductor Roberto (existente, de la Etapa 1). 
+   El costo es de $3500.
+
+Metodo: POST
+http://localhost:8080/MuberRESTful/rest/services/viajes/nuevo
+
+PostMan - Body - Raw - JSON
+
+{
+	"origen":"Cordoba",
+	"destino":"MarDelPlata",
+	"conductorId": 1,
+	"costoTotal": 3500,
+	"cantidadPasajeros": 4
+}	
+	 	
+	 	
+b. Margarita se suma al viaje, pero antes suma $4000 a su crédito. 
+   Un nuevo pasajero, Hugo, con un crédito inicial de $2300 se suma al viaje también.
+
+Metodo: POST
+http://localhost:8080/MuberRESTful/rest/services/pasajeros/nuevo
+
+PostMan - Body - Raw - JSON
+  
+{
+	"name":"Hugo",
+	"password":"1234",
+	"credit": 2300
+}
+
+Metodo: PUT
+http://localhost:8080/MuberRESTful/rest/services/pasajeros/cargarCredito
+
+PostMan - Body - Raw - JSON
+
+{
+	"pasajeroId":3,
+	"monto":4000
+}
+
+Metodo: PUT
+http://localhost:8080/MuberRESTful/rest/services/viajes/agregarPasajero
+
+PostMan - Body - Raw - JSON
+
+{
+	"viajeId":2,
+	"pasajeroId":3
+}
+
+Metodo: PUT
+http://localhost:8080/MuberRESTful/rest/services/viajes/agregarPasajero
+
+PostMan - Body - Raw - JSON
+
+{
+	"viajeId":2,
+	"pasajeroId":5
+}
+
+
+d. Al finalizar el viaje se realizan los descuentos correspondientes al 
+   crédito de los dos pasajeros.
+
+Metodo: PUT
+http://localhost:8080/MuberRESTful/rest/services/viajes/finalizar
+
+PostMan - Body - Raw - JSON
+
+{
+	"viajeId":2
+}
+
+
+c. Al finalizar el viaje los dos pasajeros califican el mismo.Margarita califica con un 4, y Hugo con un 5. 
+   Ambos dejan comentarios al respecto.
+
+Metodo: POST
+http://localhost:8080/MuberRESTful/rest/services/viajes/calificar
+
+PostMan - Body - Raw - JSON
+
+{
+	"viajeId":2,
+	"pasajeroId":3,
+	"puntaje": 4,
+	"comentario": "Margarita_OK"
+}
+	 	
+	 	
+Metodo: POST
+http://localhost:8080/MuberRESTful/rest/services/viajes/calificar
+
+PostMan - Body - Raw - JSON
+
+{
+	"viajeId":2,
+	"pasajeroId":5,
+	"puntaje": 5,
+	"comentario": "Hugo_OK"
+}
+

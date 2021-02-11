@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bd2.Muber.model.Rating" table="rating">
+        <id name="id" column="rating_id">
+            <generator class="native" />
+        </id>
+        <property name="comment" />
+        <property name="score" />
+        <many-to-one name="passenger" column="passenger_id" />
+        
+    <many-to-one name="travel" 
+        column="travel_id"
+        not-null="true"/>
+                
+    </class>
+</hibernate-mapping>
