@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Muber API - Java Spring Boot Application
 ## Overview
 Muber is a RESTful API-based application that simulates the functionality of a ride-hailing service similar to Uber. This project is built using Java and Spring Boot, providing services for managing passengers, drivers, and trips. It supports operations like registering new users, listing available drivers or passengers, and managing travel bookings.
